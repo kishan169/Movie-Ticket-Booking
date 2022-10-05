@@ -1,10 +1,14 @@
 package com.booking.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -24,11 +28,9 @@ public class CinemaHall {
 	@JsonIgnore
 	private CinemaHallSeat hallSeats;
 	
-	
-	public CinemaHall() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	@ManyToMany
+	@JsonIgnore
+	private Set<Movie> movie = new HashSet<>();
 
 	public Integer getCinemaId() {
 		return cinemaId;
@@ -62,6 +64,19 @@ public class CinemaHall {
 		this.hallSeats = hallSeats;
 	}
 
+	public Set<Movie> getMovie() {
+		return movie;
+	}
+
+	public void setMovie(Set<Movie> movie) {
+		this.movie = movie;
+	}
+
+	public CinemaHall() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
 	
 	
 	

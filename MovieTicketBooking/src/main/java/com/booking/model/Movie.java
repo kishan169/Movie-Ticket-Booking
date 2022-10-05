@@ -1,6 +1,7 @@
 package com.booking.model;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -8,7 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.ManyToAny;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -35,9 +39,9 @@ public class Movie {
 	
 	private String genre;
 	
-	@OneToMany
+	@ManyToMany(mappedBy = "movie")
 	@JsonIgnore
-	private Set<CinemaHall> cinemaHalls;
+	private Set<CinemaHall> cinemaHalls = new HashSet<>();
 
 	public Integer getMovieId() {
 		return movieId;
