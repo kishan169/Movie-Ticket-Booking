@@ -22,9 +22,7 @@ public class CinemaHallController {
 	
 	@PostMapping("cinema")
 	public CinemaHall addCinemaDetail(CinemaHall cinemaHall) {
-		
 		CinemaHall ch = cHallService.addCinemaHallDetails(cinemaHall);
-		
 		return ch;
 	}
 	

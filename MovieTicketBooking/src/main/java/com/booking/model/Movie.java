@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -39,7 +40,7 @@ public class Movie {
 	
 	private String genre;
 	
-	@ManyToMany(mappedBy = "movie")
+	@ManyToMany(cascade = CascadeType.ALL,mappedBy = "movie")
 	@JsonIgnore
 	private Set<CinemaHall> cinemaHalls = new HashSet<>();
 
